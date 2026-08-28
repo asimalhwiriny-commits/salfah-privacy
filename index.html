@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سياسة الخصوصية - مين راعي السالفة؟</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FFF6E6;
+            --cream-soft: #F4ECD6;
+            --white: #FFFFFF;
+            --pink: #FF3D6E;
+            --yellow: #FFE434;
+            --cobalt: #1A3DCB;
+            --mint: #7DFF9E;
+            --red: #FF3024;
+            --ink: #0A0A0A;
+            --muted: #5A4F3C;
+            --display: 'Lalezar', 'Cairo', sans-serif;
+            --body: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            background: var(--cream);
+            color: var(--ink);
+            font-family: var(--body);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Confetti dots in the background — sticker-pack feel */
+        body {
+            background-image:
+                radial-gradient(circle at 12% 18%, var(--pink) 0 6px, transparent 7px),
+                radial-gradient(circle at 88% 22%, var(--yellow) 0 8px, transparent 9px),
+                radial-gradient(circle at 22% 82%, var(--cobalt) 0 5px, transparent 6px),
+                radial-gradient(circle at 78% 88%, var(--mint) 0 7px, transparent 8px),
+                radial-gradient(circle at 50% 50%, var(--ink) 0 3px, transparent 4px);
+            background-size: 380px 380px;
+            background-attachment: fixed;
+            padding: 28px 16px 80px;
+        }
+
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+        /* HEADER — chunky pink card, thick black border, hard offset shadow */
+        .header {
+            background: var(--pink);
+            color: var(--ink);
+            border: 4px solid var(--ink);
+            border-radius: 24px;
+            padding: 36px 28px 28px;
+            text-align: center;
+            box-shadow: 10px 10px 0 var(--ink);
+            transform: rotate(-1deg);
+            margin-bottom: 36px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -16px;
+            left: -16px;
+            width: 56px;
+            height: 56px;
+            background: var(--yellow);
+            border: 4px solid var(--ink);
+            border-radius: 999px;
+            box-shadow: 4px 4px 0 var(--ink);
+            transform: rotate(-12deg);
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -18px;
+            right: -10px;
+            width: 44px;
+            height: 44px;
+            background: var(--mint);
+            border: 4px solid var(--ink);
+            border-radius: 12px;
+            box-shadow: 4px 4px 0 var(--ink);
+            transform: rotate(15deg);
+        }
+
+        .header h1 {
+            font-family: var(--display);
+            font-size: clamp(2.2em, 6vw, 3.4em);
+            line-height: 1.05;
+            color: var(--ink);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .header .tagline {
+            font-family: var(--display);
+            font-size: 1.4em;
+            background: var(--ink);
+            color: var(--cream);
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 999px;
+            margin-bottom: 14px;
+            transform: rotate(1deg);
+        }
+
+        .header .stamp {
+            display: inline-block;
+            background: var(--cream);
+            color: var(--ink);
+            border: 3px solid var(--ink);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-family: var(--display);
+            font-size: 0.95em;
+            box-shadow: 3px 3px 0 var(--ink);
+            transform: rotate(-2deg);
+            margin-top: 6px;
+        }
+
+        /* LANG SWITCH — chunky pill buttons */
+        .lang-switch {
+            text-align: center;
+            margin: 0 0 32px;
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .lang-btn {
+            background: var(--cream);
+            color: var(--ink);
+            border: 3px solid var(--ink);
+            padding: 12px 28px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-family: var(--display);
+            font-size: 1.15em;
+            box-shadow: 5px 5px 0 var(--ink);
+            transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+        }
+
+        .lang-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0 var(--ink);
+        }
+
+        .lang-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 var(--ink);
+        }
+
+        .lang-btn.active {
+            background: var(--yellow);
+        }
+
+        /* SECTION CARDS — parchment with thick black border, slight tilt, hard shadow */
+        .section {
+            background: var(--white);
+            border: 3px solid var(--ink);
+            border-radius: 20px;
+            padding: 28px 26px 22px;
+            margin-bottom: 28px;
+            box-shadow: 8px 8px 0 var(--ink);
+            position: relative;
+        }
+
+        /* Alternate tilts via nth-child for sticker-pack feel */
+        .arabic-content .section:nth-child(odd)  { transform: rotate(-0.6deg); }
+        .arabic-content .section:nth-child(even) { transform: rotate(0.6deg); }
+        .english-content .section:nth-child(odd)  { transform: rotate(0.6deg); }
+        .english-content .section:nth-child(even) { transform: rotate(-0.6deg); }
+
+        /* Numbered seal badge (WaxSeal style) */
+        .section h2 {
+            font-family: var(--display);
+            font-size: 1.7em;
+            color: var(--ink);
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 3px dashed var(--ink);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            line-height: 1.2;
+        }
+
+        .seal {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 46px;
+            height: 46px;
+            padding: 0 10px;
+            background: var(--cobalt);
+            color: var(--cream);
+            border: 3px solid var(--ink);
+            border-radius: 999px;
+            font-family: var(--display);
+            font-size: 1.1em;
+            box-shadow: 3px 3px 0 var(--ink);
+            transform: rotate(-6deg);
+            flex-shrink: 0;
+        }
+
+        .section:nth-child(3n) .seal { background: var(--pink); transform: rotate(5deg); }
+        .section:nth-child(3n+1) .seal { background: var(--yellow); color: var(--ink); transform: rotate(-4deg); }
+        .section:nth-child(3n+2) .seal { background: var(--cobalt); color: var(--cream); transform: rotate(6deg); }
+
+        .section h3 {
+            font-family: var(--display);
+            font-size: 1.3em;
+            color: var(--ink);
+            margin-top: 22px;
+            margin-bottom: 12px;
+            padding: 6px 14px;
+            background: var(--yellow);
+            border: 2.5px solid var(--ink);
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 3px 3px 0 var(--ink);
+        }
+
+        .section p {
+            color: var(--ink);
+            font-size: 1.05em;
+            margin-bottom: 14px;
+        }
+
+        .section ul {
+            padding-right: 24px;
+            margin-bottom: 14px;
+            list-style: none;
+        }
+
+        [dir="ltr"] .section ul {
+            padding-right: 0;
+            padding-left: 24px;
+        }
+
+        .section li {
+            color: var(--ink);
+            font-size: 1.05em;
+            margin-bottom: 10px;
+            position: relative;
+            padding-right: 22px;
+        }
+
+        [dir="ltr"] .section li {
+            padding-right: 0;
+            padding-left: 22px;
+        }
+
+        .section li::before {
+            content: '';
+            position: absolute;
+            top: 0.65em;
+            right: 0;
+            width: 10px;
+            height: 10px;
+            background: var(--pink);
+            border: 2px solid var(--ink);
+            border-radius: 3px;
+            transform: rotate(45deg);
+        }
+
+        [dir="ltr"] .section li::before {
+            right: auto;
+            left: 0;
+        }
+
+        .section a {
+            color: var(--cobalt);
+            font-weight: 700;
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 3px;
+        }
+
+        .section strong {
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        /* HIGHLIGHT box — yellow sticker note */
+        .highlight {
+            background: var(--yellow);
+            border: 3px solid var(--ink);
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin: 18px 0;
+            box-shadow: 5px 5px 0 var(--ink);
+            transform: rotate(-0.8deg);
+        }
+
+        .highlight strong {
+            display: block;
+            font-family: var(--display);
+            font-size: 1.2em;
+            margin-bottom: 6px;
+        }
+
+        /* WARNING — red disclaimer sticker */
+        .warning {
+            background: var(--red);
+            color: var(--cream);
+            border: 3px solid var(--ink);
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin: 18px 0;
+            box-shadow: 5px 5px 0 var(--ink);
+            transform: rotate(0.8deg);
+        }
+
+        .warning strong {
+            display: block;
+            font-family: var(--display);
+            font-size: 1.2em;
+            margin-bottom: 6px;
+            color: var(--cream);
+        }
+
+        /* CONTACT — pink action card */
+        .contact {
+            background: var(--pink);
+            color: var(--ink);
+            border: 4px solid var(--ink);
+            border-radius: 22px;
+            padding: 32px 28px;
+            text-align: center;
+            box-shadow: 10px 10px 0 var(--ink);
+            margin-top: 16px;
+            transform: rotate(-0.5deg);
+        }
+
+        .contact h2 {
+            font-family: var(--display);
+            font-size: 2em;
+            margin-bottom: 12px;
+            border: none;
+            padding: 0;
+            display: block;
+            color: var(--ink);
+        }
+
+        .contact p {
+            color: var(--ink);
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+
+        .contact a {
+            background: var(--ink);
+            color: var(--cream);
+            padding: 8px 18px;
+            border-radius: 999px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 6px;
+            font-family: var(--display);
+            font-size: 1.05em;
+            border: 3px solid var(--ink);
+            box-shadow: 4px 4px 0 var(--cream);
+            transition: transform 120ms ease;
+        }
+
+        .contact a:hover {
+            transform: translate(-2px, -2px);
+        }
+
+        .english-content { display: none; }
+
+        [dir="ltr"] {
+            text-align: left;
+        }
+
+        @media (max-width: 720px) {
+            body { padding: 16px 10px 60px; background-size: 280px 280px; }
+            .header { padding: 28px 18px 22px; transform: none; }
+            .header::before, .header::after { display: none; }
+            .section { padding: 22px 18px 18px; transform: none !important; box-shadow: 6px 6px 0 var(--ink); }
+            .arabic-content .section, .english-content .section { transform: none !important; }
+            .section h2 { font-size: 1.4em; gap: 10px; }
+            .seal { min-width: 38px; height: 38px; font-size: 1em; }
+            .contact { padding: 24px 18px; transform: none; }
+            .contact h2 { font-size: 1.6em; }
+            .lang-btn { padding: 10px 20px; font-size: 1em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>مين راعي السالفة؟</h1>
+            <div class="tagline">سياسة الخصوصية · Privacy Policy</div>
+            <div>
+                <span class="stamp">آخر تحديث: 21 أبريل 2026 · Last updated: April 21, 2026</span>
+            </div>
+        </header>
+
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="showArabic()">العربية</button>
+            <button class="lang-btn" onclick="showEnglish()">English</button>
+        </div>
+
+        <!-- Arabic Content -->
+        <main class="arabic-content" dir="rtl">
+            <section class="section">
+                <h2><span class="seal">١</span> المقدمة</h2>
+                <p>مرحباً بك في تطبيق "مين راعي السالفة؟". هذه السياسة توضح البيانات التي يتعامل معها التطبيق وكيف يتم استخدامها.</p>
+            </section>
+
+            <section class="section">
+                <h2><span class="seal">٢</span> أنواع اللعب والبيانات</h2>
+
+                <h3>٢.١ الوضع المحلي</h3>
+                <ul>
+                    <li>كل البيانات تبقى على جهازك.</li>
+                    <li>لا نرسل أسماء اللاعبين ولا السواليف إلى أي خادم.</li>
+                </ul>
+
+                <h3>٢.٢ الوضع الأونلاين</h3>
+                <p>لجعل الغرفة تعمل بين الأجهزة، نستخدم خدمة <strong>Google Firebase Realtime Database</strong>. أثناء وجودك في الغرفة نُخزّن مؤقتاً:</p>
+                <ul>
+                    <li>الاسم المعروض الذي تكتبه (من 1 إلى 20 حرفاً).</li>
+                    <li>نص السواليف التي تكتبها (حتى 500 حرف لكل سالفة).</li>
+                    <li>رمز الغرفة (6 حروف) وحالة اتصال اللاعبين والأصوات.</li>
+                </ul>
+                <div class="highlight">
+                    <strong>ما لا نطلبه ولا نخزنه</strong>
+                    <p>البريد الإلكتروني، الاسم الحقيقي، رقم الهاتف، الموقع، الصور، أو جهات الاتصال.</p>
+                </div>
+
+                <h3>٢.٣ مدة الاحتفاظ</h3>
+                <ul>
+                    <li>بيانات الغرفة الأونلاين تُحذف تلقائياً عند مغادرة جميع اللاعبين أو بعد فترة عدم نشاط.</li>
+                    <li>يمكنك طلب حذف بيانات غرفة معينة بمراسلتنا على البريد أدناه مع كود الغرفة.</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2><span class="seal">٣</span> الإعلانات (Google AdMob)</h2>
+                <p>نستخدم خدمة Google AdMob لعرض الإعلانات. قد تجمع AdMob معلومات مثل: نوع الجهاز، نظام التشغيل، ومعرّف الإعلانات. هذه البيانات تخضع لسياسة خصوصية Google:</p>
+                <p><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
+                <p>إيقاف الإعلانات المخصصة:</p>
+                <ul>
+                    <li><strong>iOS:</strong> الإعدادات ← الخصوصية ← تتبع / الإعلانات</li>
+                    <li><strong>Android:</strong> الإعدادات ← Google ← الإعلانات</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2><span class="seal">٤</span> الأمان</h2>
+                <ul>
+                    <li>استخدام الوضع الأونلاين يتم عبر خوادم Google (Firebase)، ونعتمد على إجراءاتهم الأمنية.</li>
+                    <li>نبذل جهداً معقولاً لحماية بياناتك، لكن لا يمكن لأي نظام ضمان الأمان المطلق.</li>
+                </ul>
+                <div class="warning">
+                    <strong>إخلاء مسؤولية</strong>
+                    <p>في حال حدوث اختراق أو تسريب ناتج عن خدمات الطرف الثالث (Google Firebase أو Google AdMob)، فإن المسؤولية تقع على الخدمة المعنية. ونحن غير ملزمين بتعويض عن أي أضرار ناتجة إلى الحد المسموح به قانونياً.</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><span class="seal">٥</span> المحتوى الذي يكتبه المستخدم</h2>
+                <ul>
+                    <li>السواليف التي تكتبها هي من إنشائك أنت. أنت المسؤول عن محتواها.</li>
+                    <li>يُمنع كتابة محتوى غير قانوني أو يحتوي على معلومات شخصية حساسة أو يشهّر بالآخرين.</li>
+                    <li>يحق لنا إزالة أي محتوى يُبلَّغ عنه أنه مخالف.</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2><span class="seal">٦</span> الأطفال</h2>
+                <p>التطبيق موجّه للأعمار <strong>13 سنة فأكثر</strong> بسبب طبيعة المحتوى الذي يكتبه المستخدمون. لا نجمع عن قصد بيانات من أطفال تحت 13 سنة. إذا علمت بأن طفلاً قدّم بيانات، راسلنا وسنحذفها.</p>
+            </section>
+
+            <section class="section">
+                <h2><span class="seal">٧</span> خدمات الطرف الثالث</h2>
+                <ul>
+                    <li><strong>Google Firebase Realtime Database</strong> — لمزامنة الغرف الأونلاين.</li>
+                    <li><strong>Google AdMob</strong> — لعرض الإعلانات.</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2><span class="seal">٨</span> حقوقك</h2>
+                <ul>
+                    <li>حذف بيانات غرفة أونلاين: راسلنا بكود الغرفة.</li>
+                    <li>إيقاف الإعلانات المخصصة: من إعدادات الجهاز (القسم 3 أعلاه).</li>
+                    <li>لا نبيع بياناتك لأي جهة.</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2><span class="seal">٩</span> تحديد المسؤولية</h2>
+                <p>ضمن الحد الأقصى الذي يسمح به القانون:</p>
+                <ul>
+                    <li>التطبيق يُقدَّم "كما هو" بدون ضمانات صريحة أو ضمنية.</li>
+                    <li>نحن غير مسؤولين عن الأضرار غير المباشرة أو التبعية الناتجة عن استخدام التطبيق، أو عن أي خرق أمني لخدمات الطرف الثالث.</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2><span class="seal">١٠</span> تغييرات على هذه السياسة</h2>
+                <p>قد نقوم بتحديث هذه السياسة. التغييرات تُنشر على هذه الصفحة مع تاريخ التحديث. الاستمرار في استخدام التطبيق بعد التحديث يعتبر قبولاً للسياسة الجديدة.</p>
+            </section>
+
+            <section class="contact">
+                <h2>اتصل بنا</h2>
+                <p>إذا كان لديك أي سؤال حول سياسة الخصوصية:</p>
+                <a href="mailto:asimapps.dev@gmail.com">asimapps.dev@gmail.com</a>
+            </section>
+        </main>
+
+        <!-- English Content -->
+        <main class="english-content" dir="ltr">
+            <section class="section">
+                <h2><span class="seal">1</span> Introduction</h2>
+                <p>Welcome to "Who's the Storyteller?". This policy describes what data the app handles and how.</p>
+            </section>
+
+            <section class="section">
+                <h2><span class="seal">2</span> Play Modes and Data</h2>
+
+                <h3>2.1 Local Mode</h3>
+                <ul>
+                    <li>All data stays on your device.</li>
+                    <li>No player names or stories are transmitted to any server.</li>
+                </ul>
+
+                <h3>2.2 Online Mode</h3>
+                <p>To make rooms work across devices, the app uses <strong>Google Firebase Realtime Database</strong>. While a room is active we temporarily store:</p>
+                <ul>
+                    <li>Your chosen display name (1–20 characters).</li>
+                    <li>The story text you type (up to 500 characters per story).</li>
+                    <li>Room code (6 chars), player presence, and votes.</li>
+                </ul>
+                <div class="highlight">
+                    <strong>What we do NOT request or store</strong>
+                    <p>Email, real name, phone number, location, photos, or contacts.</p>
+                </div>
+
+                <h3>2.3 Retention</h3>
+                <ul>
+                    <li>Online-room data is deleted automatically when all players leave or after a period of inactivity.</li>
+                    <li>You can request deletion of a specific room's data by emailing us (below) with the room code.</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2><span class="seal">3</span> Advertising (Google AdMob)</h2>
+                <p>We use Google AdMob to display ads. AdMob may collect information such as device type, OS, and advertising ID. This data is handled under Google's privacy policy:</p>
+                <p><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
+                <p>Opt out of personalized ads:</p>
+                <ul>
+                    <li><strong>iOS:</strong> Settings → Privacy → Tracking / Advertising</li>
+                    <li><strong>Android:</strong> Settings → Google → Ads</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2><span class="seal">4</span> Security</h2>
+                <ul>
+                    <li>Online mode runs on Google-hosted infrastructure (Firebase). We rely on their security controls.</li>
+                    <li>We take reasonable measures to protect your data, but no system can guarantee absolute security.</li>
+                </ul>
+                <div class="warning">
+                    <strong>Disclaimer</strong>
+                    <p>In the event of a breach or leak originating from a third-party service (Google Firebase or Google AdMob), liability rests with that service. We are not liable for damages resulting from such third-party breaches, to the extent permitted by applicable law.</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><span class="seal">5</span> User-Generated Content</h2>
+                <ul>
+                    <li>Stories you type are authored by you. <strong>You are responsible for their content.</strong></li>
+                    <li>Do not submit illegal content, sensitive personal information, or content that defames others.</li>
+                    <li>We reserve the right to remove reported content that violates these terms.</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2><span class="seal">6</span> Children</h2>
+                <p>The app is intended for users <strong>13 years of age and older</strong> due to the user-generated nature of its content. We do not knowingly collect data from children under 13. If you believe a child has submitted data, contact us and we will delete it.</p>
+            </section>
+
+            <section class="section">
+                <h2><span class="seal">7</span> Third-Party Services</h2>
+                <ul>
+                    <li><strong>Google Firebase Realtime Database</strong> — online room synchronization.</li>
+                    <li><strong>Google AdMob</strong> — advertisements.</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2><span class="seal">8</span> Your Rights</h2>
+                <ul>
+                    <li>Delete an online room's data: email us with the room code.</li>
+                    <li>Opt out of personalized ads: use device settings (Section 3).</li>
+                    <li>We do not sell your data to any party.</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2><span class="seal">9</span> Limitation of Liability</h2>
+                <p>To the maximum extent permitted by law:</p>
+                <ul>
+                    <li>The app is provided <strong>"as is"</strong> without warranties of any kind, express or implied.</li>
+                    <li>We are not liable for indirect or consequential damages arising from use of, or inability to use, the app, or from any security breach of third-party services.</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2><span class="seal">10</span> Changes to This Policy</h2>
+                <p>We may update this policy. Changes will be posted on this page with the updated date. Continued use after an update constitutes acceptance.</p>
+            </section>
+
+            <section class="contact">
+                <h2>Contact</h2>
+                <p>If you have questions about this privacy policy:</p>
+                <a href="mailto:asimapps.dev@gmail.com">asimapps.dev@gmail.com</a>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function showArabic() {
+            document.querySelector('.arabic-content').style.display = 'block';
+            document.querySelector('.english-content').style.display = 'none';
+            document.querySelectorAll('.lang-btn')[0].classList.add('active');
+            document.querySelectorAll('.lang-btn')[1].classList.remove('active');
+            document.documentElement.setAttribute('dir', 'rtl');
+            document.documentElement.setAttribute('lang', 'ar');
+        }
+
+        function showEnglish() {
+            document.querySelector('.arabic-content').style.display = 'none';
+            document.querySelector('.english-content').style.display = 'block';
+            document.querySelectorAll('.lang-btn')[0].classList.remove('active');
+            document.querySelectorAll('.lang-btn')[1].classList.add('active');
+            document.documentElement.setAttribute('dir', 'ltr');
+            document.documentElement.setAttribute('lang', 'en');
+        }
+    </script>
+</body>
+</html>
